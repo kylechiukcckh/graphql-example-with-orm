@@ -1,4 +1,11 @@
-import { MaxLength, Length } from "class-validator";
+import {
+  MaxLength,
+  Length,
+  IsEmail,
+  IsPositive,
+  IsInt,
+  Max,
+} from "class-validator";
 import { Field, InputType } from "type-graphql";
 
 @InputType()
@@ -8,7 +15,9 @@ export class CreateUserRequest {
   name!: string;
 
   @Field()
-  @Length(1, 3)
+  @IsPositive()
+  @IsInt()
+  @Max(200)
   age!: number;
 
   @Field()
@@ -16,7 +25,7 @@ export class CreateUserRequest {
   gender!: string;
 
   @Field()
-  //TODO: Custom validator for email format
+  @IsEmail()
   email!: string;
 
   @Field()

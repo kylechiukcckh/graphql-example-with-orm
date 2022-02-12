@@ -21,11 +21,11 @@ class User extends BaseEntity {
   name!: string;
 
   @Field()
-  @Column()
+  @Column({ type: "int2" })
   age!: number;
 
   @Field()
-  @Column()
+  @Column({ length: 1, type: "character" })
   gender!: string;
 
   @Field()
@@ -33,7 +33,7 @@ class User extends BaseEntity {
   email!: string;
 
   @Field()
-  @Column({ length: 3, name: "COB", type: "varchar" })
+  @Column({ length: 6, name: "COB", type: "nvarchar" })
   cityOfBirth!: string;
 
   @CreateDateColumn()
