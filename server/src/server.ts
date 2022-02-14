@@ -7,7 +7,14 @@ import { resolvers } from "./resolvers";
 async function main() {
   await createConnection();
   const schema = await buildSchema({ resolvers });
-  const server = new ApolloServer({ schema });
+  //TODO: fix cors setting ()
+  const server = new ApolloServer({
+    schema,
+    cors: {
+      origin: "*",
+      credentials: true,
+    },
+  });
   await server.listen(4000);
 }
 
